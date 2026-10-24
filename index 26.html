@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 3 · Lesson 9, part 1 · School trip to the Moon</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--space:#0B1437;--purple:#6C4BFF;--cyan:#3DE0FF;--moon:#FFE066;--rocket:#FF7A3D;--dust:#F4F1FF;--ink:#14224F}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:'Baloo 2',system-ui,sans-serif;color:var(--ink);padding:14px;background:radial-gradient(ellipse at 20% 10%,#2A2670 0%,transparent 55%),radial-gradient(ellipse at 85% 90%,#4A2A8F 0%,transparent 50%),linear-gradient(180deg,#0B1437,#16134A 60%,#241058) fixed;overflow-x:hidden}
+.sp{position:fixed;z-index:0;pointer-events:none;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.6)}50%{opacity:1;transform:scale(1.15)}}
+.pl{position:fixed;z-index:0;pointer-events:none}
+.moon{position:fixed;right:4%;bottom:6%;z-index:0;pointer-events:none;animation:flo 6s ease-in-out infinite alternate}
+@keyframes flo{from{transform:translateY(0)}to{transform:translateY(-16px)}}
+.wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+button{font-family:inherit;cursor:pointer}button:focus-visible{outline:4px solid var(--moon);outline-offset:2px}
+.top{background:#ffffff14;border:3px solid var(--cyan);border-radius:22px;padding:12px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;color:#fff;box-shadow:0 0 24px #3DE0FF55,inset 0 0 20px #3DE0FF22;backdrop-filter:blur(4px)}
+.top small{color:var(--cyan);font-weight:800;letter-spacing:2px}.top h1{margin:0;font-size:clamp(24px,4vw,36px);font-weight:800;text-shadow:0 0 14px #6C4BFF}
+.top .tt{display:flex;gap:14px;align-items:center}
+.badge{background:var(--moon);color:var(--ink);border:3px solid #fff;border-radius:999px;padding:2px 16px;font-weight:800;font-size:20px;display:inline-flex;gap:8px;align-items:center;box-shadow:0 0 16px #FFE066aa}
+.fl{position:relative;height:64px;margin:0 8px}
+.fl .trk{position:absolute;left:8px;right:40px;top:40px;border-top:5px dotted #ffffff88}
+.fl .st{position:absolute;top:32px;width:18px;height:18px;border-radius:50%;background:#2A2670;border:3px solid var(--cyan);margin-left:-9px}.fl .st.on{background:var(--moon);box-shadow:0 0 10px var(--moon)}
+.fl .rk{position:absolute;top:-2px;transition:left .9s cubic-bezier(.5,1.4,.5,1);margin-left:-18px}
+.fl .mn{position:absolute;right:0;top:8px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:#fff}.nav span{font-weight:800;color:var(--cyan)}
+.nav button{border:3px solid var(--cyan);background:#ffffff14;color:#fff;border-radius:999px;padding:5px 14px;font-size:16px;font-weight:700;transition:transform .15s}
+.nav button:hover{transform:translateY(-2px);background:#ffffff33}.nav button.on{background:var(--rocket);border-color:#fff;color:#fff;box-shadow:0 0 14px #FF7A3Daa}
+.card{background:var(--dust);border:4px solid var(--cyan);border-radius:26px;padding:clamp(16px,3vw,30px);display:flex;flex-direction:column;gap:14px;box-shadow:0 0 28px #3DE0FF66,0 8px 0 #0006;animation:pop .45s}
+.card h2{margin:0;font-size:clamp(20px,3vw,28px)}
+.meta{display:flex;justify-content:space-between;font-weight:800;font-size:18px;flex-wrap:wrap;gap:6px;padding-bottom:10px;border-bottom:4px dotted var(--purple)}
+.q{font-size:clamp(22px,3.4vw,32px);font-weight:800;line-height:1.3}.q b{color:#5A33E6;background:#E5DEFF;border-radius:8px;padding:0 6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.o{display:flex;align-items:center;justify-content:center;gap:12px;border:3px solid var(--ink);background:#fff;color:var(--ink);border-radius:18px;padding:14px 18px;font-size:clamp(18px,2.6vw,24px);font-weight:700;box-shadow:0 5px 0 var(--ink);transition:transform .12s}
+.grid .o:nth-child(3n+1){border-left:14px solid var(--rocket)}.grid .o:nth-child(3n+2){border-left:14px solid var(--cyan)}.grid .o:nth-child(3n+3){border-left:14px solid var(--purple)}
+.o:hover:not(:disabled){transform:translateY(-3px);background:#F0EBFF}.o:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.o.ok{background:#8DF0C8;animation:pop .4s}.o.bad{background:#FFB0A0;animation:shake .4s}.o.pk{background:var(--moon)}.o:disabled{cursor:default}
+.fb{font-size:22px;font-weight:700;min-height:44px;display:flex;align-items:center;gap:10px}
+.seal{display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:64px;border-radius:50%;background:var(--rocket);color:#fff;border:4px solid var(--ink);font-size:14px;font-weight:800;animation:stampin .4s;padding:0 6px;text-align:center;line-height:1.05;flex:none;box-shadow:0 0 16px #FF7A3D99}.seal.no{background:#6B6A8C;box-shadow:none}
+.go{align-self:flex-end;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:12px 32px;font-size:21px;font-weight:800;box-shadow:0 5px 0 #070d28}
+.go.alt{background:var(--rocket);box-shadow:0 5px 0 #b3501f}.go[disabled]{opacity:.35}.go:active{transform:translateY(3px)}
+.row{display:flex;gap:12px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.box{background:#fff;border:3px dashed var(--purple);border-radius:16px;padding:12px 20px;font-size:clamp(18px,2.4vw,22px);line-height:1.8}.box b{color:#5A33E6}
+.learn{background:#DDF8FF;border:3px solid var(--cyan);border-radius:16px;padding:10px 18px;font-size:19px}
+.cz{display:grid;grid-template-columns:40px repeat(3,1fr);gap:8px;align-items:center}.cz .o{padding:6px 12px;justify-content:flex-start;border-color:transparent;box-shadow:none;background:transparent;border-left-width:3px!important;font-size:clamp(17px,2.2vw,22px)}.cz .o.sel{border-color:var(--ink);background:#fff}
+.cz .o.ok{background:#8DF0C8}.cz .o.bad{background:#FFB0A0}
+.dot{width:26px;height:16px;border:3px solid var(--ink);border-radius:50%;background:#fff;flex:none}.sel .dot{background:var(--ink)}
+.q2{font-size:clamp(19px,2.5vw,24px);font-weight:800;margin-top:4px}
+.mail{background:#fff;border:3px solid var(--ink);border-radius:14px;padding:12px 18px;font-size:clamp(16px,2.1vw,19px);line-height:1.6;max-height:300px;overflow:auto}.mail b{color:#5A33E6}
+.chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px}.chk div{background:#fff;border:3px solid var(--ink);border-radius:14px;padding:8px 14px;font-weight:700;display:flex;gap:10px;align-items:center}.chk i{width:26px;height:26px;border:3px solid var(--ink);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-style:normal;background:#fff;flex:none}.chk .on i{background:#8DF0C8}
+.credit{text-align:right;font-size:15px;font-weight:700;color:#fff}
+.big-stamp{align-self:center;font-size:clamp(34px,6vw,56px);font-weight:800;color:var(--rocket);border:6px solid var(--rocket);border-radius:20px;padding:0 26px;transform:rotate(-5deg);animation:stampin .5s;background:#fff}
+@keyframes pop{0%{transform:scale(.96);opacity:.4}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@keyframes stampin{0%{transform:scale(2.2) rotate(-14deg);opacity:0}100%{transform:scale(1) rotate(-6deg);opacity:1}}
+</style></head><body>
+<svg class="sp" style="left:60%;top:80%;animation-delay:1.1s;width:14px;height:14px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:18%;top:25%;animation-delay:2.6s;width:10px;height:10px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:1%;top:45%;animation-delay:1.5s;width:18px;height:18px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:78%;top:12%;animation-delay:1.0s;width:12px;height:12px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:79%;top:91%;animation-delay:0.1s;width:9px;height:9px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:49%;top:23%;animation-delay:2.1s;width:16px;height:16px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:58%;top:94%;animation-delay:1.3s;width:11px;height:11px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:22%;top:32%;animation-delay:0.2s;width:13px;height:13px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:17%;top:66%;animation-delay:2.6s;width:10px;height:10px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:76%;top:10%;animation-delay:2.3s;width:15px;height:15px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:50%;top:15%;animation-delay:2.8s;width:12px;height:12px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:27%;top:88%;animation-delay:0.7s;width:9px;height:9px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:54%;top:13%;animation-delay:2.3s;width:17px;height:17px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="sp" style="left:27%;top:52%;animation-delay:0.8s;width:11px;height:11px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/></svg><svg class="pl" style="left:3%;top:55%" width="110" height="80" viewBox="0 0 110 80" aria-hidden="true" opacity=".85"><ellipse cx="55" cy="40" rx="52" ry="12" fill="none" stroke="#FFE066" stroke-width="5" transform="rotate(-18 55 40)"/><circle cx="55" cy="40" r="22" fill="#FF9F5A"/><path d="M33 36q22 8 44 0M34 46q21 6 42 0" stroke="#C9602A" stroke-width="3" fill="none"/><path d="M5 48C25 62 85 38 105 30" stroke="#FFE066" stroke-width="5" fill="none" stroke-linecap="round" transform="rotate(0)"/></svg><svg class="moon" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true" opacity=".92"><circle cx="60" cy="60" r="54" fill="#F2EEDD"/><circle cx="40" cy="42" r="12" fill="#D9D3BA"/><circle cx="78" cy="70" r="16" fill="#D9D3BA"/><circle cx="52" cy="88" r="7" fill="#D9D3BA"/><circle cx="84" cy="34" r="6" fill="#D9D3BA"/></svg>
+<div class="wrap">
+<div class="top"><div class="tt"><svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="22" r="16" fill="#fff" stroke="#3DE0FF" stroke-width="3"/><circle cx="27" cy="22" r="10" fill="#14224F"/><circle cx="23" cy="19" r="3" fill="#3DE0FF"/><rect x="14" y="36" width="26" height="14" rx="6" fill="#fff" stroke="#3DE0FF" stroke-width="3"/></svg><div><small>MISSION CONTROL · UNIT 3 · TRAVEL · LESSON 9, PART 1</small><h1>School Trip to the Moon</h1></div></div><div style="text-align:right"><span class="badge"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7.5.6-5.7 5 1.8 7.4L12 18l-6.6 4 1.8-7.4-5.7-5L9 9z" fill="#FF7A3D" stroke="#14224F" stroke-width="1.5" stroke-linejoin="round"/></svg><span id="stars"></span> Stars</span><br><small style="letter-spacing:0">Mission time: 25 minutes</small></div></div>
+<div class="fl"><div class="trk"></div><div id="stations"></div><span class="rk" id="pl"><svg width="64" height="48" viewBox="0 0 64 48" aria-hidden="true"><path d="M2 24l12-6v12z" fill="#FFB347"><animate attributeName="d" dur=".4s" repeatCount="indefinite" values="M2 24l12-6v12z;M-6 24l20-6v12z;M2 24l12-6v12z"/></path><path d="M14 10h26c10 0 20 8 22 14-2 6-12 14-22 14H14z" fill="#fff" stroke="#14224F" stroke-width="3" stroke-linejoin="round"/><circle cx="40" cy="24" r="6" fill="#3DE0FF" stroke="#14224F" stroke-width="3"/><path d="M14 10l-8-6v12zM14 38l-8 6V32z" fill="#FF7A3D" stroke="#14224F" stroke-width="3" stroke-linejoin="round"/></svg></span><span class="mn"><svg width="44" height="44" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" fill="#F2EEDD"/><circle cx="40" cy="42" r="12" fill="#D9D3BA"/><circle cx="78" cy="70" r="16" fill="#D9D3BA"/></svg></span></div>
+<div class="nav" id="nav"></div>
+<div id="main"></div>
+<div class="credit">Created by T.Badria Alfalahi</div>
+</div>
+<script>
+const N=a=>a.map(t=>({t}));
+const ML=[['Dear students,'],['We are now ready to send you information about our school trip to the Moon next month.'],['Sunday May 4th: We’re going to arrive at the launch pad at 4 a.m. We’re going to travel by express rocket to the Moon. We take off at 6 a.m. Bring a small suitcase because the rocket isn’t very big!'],['Monday May 5th: The rocket lands at 6 p.m. We’re going to travel by Moon bus to the hotel. We’re going to stay in the wonderful Space Hotel. It isn’t very big, but it’s quite comfortable. We’re going to eat special space food for dinner. It looks funny, but it’s delicious!'],['Tuesday–Thursday 6th–8th May: We’re going to explore the Moon! Everyone needs to wear spacesuits with big helmets and heavy boots. We’re going to walk on the Moon and travel in special space cars. Bring some very warm clothes to wear under your spacesuit.'],['Friday 9th May: The rocket to Earth takes off at 10 a.m. Enjoy the journey! If you look through the windows, you’ll see amazing views of Earth!'],['If you have any questions, you can email me at any time. We look forward to seeing you soon. Yours, Mrs Muna, head teacher']];
+const F2=N(['Formal','Informal']);
+const A=[
+{n:'1 · Words in context',min:3,type:'mc',q:[
+{pr:'The ___ rocket makes no stops on the way to the Moon.',o:N(['express','lucky','busy']),a:0},
+{pr:'The roads to the launch pad are very ___ in the morning.',o:N(['lovely','busy','brand-new']),a:1},
+{pr:'We are ___ because the Space Hotel has a swimming pool.',o:N(['lucky','express','busy']),a:0},
+{pr:'The view of Earth from the Moon is ___.',o:N(['busy','express','wonderful']),a:2},
+{pr:'My ___ spacesuit is not old. I got it yesterday.',o:N(['brand-new','lovely','busy']),a:0},
+{pr:'What a ___ photo of the Moon!',o:N(['busy','lovely','express']),a:1}]},
+{n:'2 · Read and complete',min:5,type:'mc',lines:ML,q:[
+{pr:'We’re going to travel by ___ rocket to the Moon.',o:N(['express','heavy','delicious']),a:0},
+{pr:'Bring a ___ suitcase because the rocket isn’t very big!',o:N(['amazing','heavy','small']),a:2},
+{pr:'The hotel isn’t very ___, but it’s quite comfortable.',o:N(['delicious','big','express']),a:1},
+{pr:'The space food looks funny, but it’s ___!',o:N(['delicious','heavy','small']),a:0},
+{pr:'Everyone needs to wear spacesuits with big helmets and ___ boots.',o:N(['amazing','delicious','heavy']),a:2},
+{pr:'If you look through the windows, you’ll see ___ views of Earth!',o:N(['amazing','small','express']),a:0}]},
+{n:'3 · The Moon trip',min:3,type:'mc',q:[
+{pr:'What time do they arrive at the launch pad?',o:N(['4 a.m.','6 a.m.','6 p.m.']),a:0},
+{pr:'When does the rocket take off on Sunday?',o:N(['6 p.m.','10 a.m.','6 a.m.']),a:2},
+{pr:'Where are they going to stay?',o:N(['In a tent','In the Space Hotel','In a rocket']),a:1},
+{pr:'What does everyone need to wear to explore the Moon?',o:N(['Spacesuits with big helmets and heavy boots','Swimsuits and flip-flops','Raincoats and sunhats']),a:0},
+{pr:'How do they travel on the Moon?',o:N(['By bus','By special space cars','By train']),a:1},
+{pr:'When does the rocket to Earth take off?',o:N(['Friday 9th May at 10 a.m.','Sunday 4th May at 6 a.m.','Monday 5th May at 6 p.m.']),a:0}]},
+{n:'4 · How to write an email',min:4,type:'mc',q:[
+{pr:'What information can you find at the top of an email?',o:N(['The subject and who the email is to','A picture','The weather']),a:0},
+{pr:'How do the emails start?',o:N(['With Dear (name)','With Bye','With Yours']),a:0},
+{pr:'How do they end?',o:N(['With Dear (name)','With Yours, (name)','With Hi']),a:1},
+{pr:'Are the emails about the school trips formal or informal?',o:F2,a:0},
+{pr:'“Dear students”',o:F2,a:0},
+{pr:'“Hi …”',o:F2,a:1},
+{pr:'“We look forward to seeing you soon”',o:F2,a:0},
+{pr:'“See you soon …”',o:F2,a:1}]},
+{n:'5 · Build your email',min:6,type:'build'},
+{n:'6 · Final task',min:4,type:'cloze'}];
+const CL=5;
+const BS=[['To:',['my best friend','Grade 7 students','everyone'],1],['Subject:',['Hey! Moon trip!!!','Trip','School trip to the Moon'],2],['Start the email:',['Dear students,','Hi guys,','Hello!'],0],['Why are you writing?',['Here’s some info about the trip.','We are now ready to send you information about our school trip.','Guess what, a trip!'],1],['Describe what the students are going to do:',['Sunday: rocket, lol. Bring stuff.','On Sunday, we are going to travel by express rocket to the Moon. Bring a small suitcase.','We go on a rocket.'],1],['End the email correctly:',['Bye!','See you soon… From Muna','We look forward to seeing you soon, Yours, Mrs Muna'],2]];
+const CK=['Have I put who the email is to and included a subject?','Have I started with Dear ... and said why I am writing?','Have I divided the email into paragraphs?','Have I ended the email correctly, with Yours, (name)?'];
+const C={t:'An email starts with {0} (1) and the name. It ends with {1} (2) and the name. A formal email is {2} (3) and professional. In the first paragraph, we say why we are {3} (4). We divide the email into {4} (5).',o:[['Dear','Hi','Hey'],['Bye','Yours,','See you'],['casual','polite','funny'],['packing','sleeping','writing'],['paragraphs','pictures','numbers']],a:[0,1,1,2,0]};
+const nst=()=>({i:0,pk:null,sc:0,done:false,ans:{},chk:false,sh:false,b:{},bad:null,msg:''});
+let S={step:0,st:A.map(nst)};
+let ac;function tone(f,d,ty){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();f.forEach((hz,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.type=ty||'sine';o.frequency.value=hz;const t=ac.currentTime+i*d;g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+d)})}catch(e){}}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function playT(L){try{speechSynthesis.cancel();L.forEach(t=>{const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=.9;speechSynthesis.speak(u)})}catch(e){}}
+const GOOD=()=>tone([523,659,784,1047],.1,'triangle'),BAD=()=>tone([220,160],.2,'sawtooth');
+function go(k){tone([523,659],.1);try{speechSynthesis.cancel()}catch(e){}S.step=k;render()}
+function play(){playT(ML.map(x=>x[0]))}
+function scr(){S.st[S.step].sh=!S.st[S.step].sh;render()}
+function pick(i){const s=S.st[S.step],q=A[S.step].q[s.i];if(s.pk!==null)return;s.pk=i;if(i===q.a){s.sc++;GOOD()}else BAD();render()}
+function nxt(){const s=S.st[S.step],a=A[S.step];if(s.pk===null)return;if(s.i+1<a.q.length){s.i++;s.pk=null}else{s.done=true;tone([523,659,784,1047],.14,'triangle')}render()}
+function retry(){S.st[S.step]=nst();tone([440,523],.1);render()}
+function bd(sec,i){const s=S.st[4];if(s.b[sec]!==undefined)return;if(i===BS[sec][2]){s.b[sec]=i;s.bad=null;s.msg='Formal! Well done.';GOOD();s.sc=Object.keys(s.b).length===6?1:0}else{s.bad=[sec,i];s.msg='That’s too informal. Try the formal one!';BAD()}render()}
+function btext(){const s=S.st[4],g=k=>BS[k][1][s.b[k]];return 'To: '+g(0)+'\nSubject: '+g(1)+'\n\n'+g(2)+'\n'+g(3)+'\n\n'+g(4)+'\n\n'+g(5)}
+function bhear(){say(btext().replace(/\n+/g,'. '))}
+function cl(g,i){const s=S.st[CL];if(s.chk)return;s.ans[g]=i;tone([660],.08);render()}
+function chk(){const s=S.st[CL];if(Object.keys(s.ans).length<5){tone([220],.15,'square');return}s.chk=true;const n=C.a.filter((a,g)=>s.ans[g]===a).length;tone(n>=4?[523,659,784,1047]:[392,330,262],.14,'triangle');render()}
+function stars(){const s=S.st;return s.slice(0,CL).reduce((x,y)=>x+y.sc,0)+(s[CL].chk?C.a.filter((a,g)=>s[CL].ans[g]===a).length:0)}
+function mc(a,s){
+ const q=a.q[s.i],n=a.q.length,lk=s.pk!==null,ok=lk&&s.pk===q.a;
+ if(s.done)return '<div class="card"><h2>'+a.n+'</h2><div class="big-stamp">'+s.sc+' / '+n+'</div><div class="fb" style="justify-content:center">'+(s.sc===n?'Perfect mission! Amazing work!':s.sc>=n-1?'Well done, astronaut!':'Good try! Play again.')+'</div><div class="row"><button class="go alt" onclick="retry()">Play again</button>'+(S.step<CL?'<button class="go" onclick="go('+(S.step+1)+')">Next planet →</button>':'')+'</div></div>';
+ const pr=q.pr.replace('___',lk?'<b>'+q.o[q.a].t+'</b>':'______');
+ const au=a.lines?'<div class="row" style="justify-content:flex-start"><button class="go alt" style="padding:8px 24px;font-size:18px" onclick="play()">▶ Listen to the email</button><button class="go" style="padding:8px 24px;font-size:18px" onclick="scr()">'+(s.sh?'Hide':'Show')+' the email</button></div>'+(s.sh?'<div class="mail"><b>To:</b> Grade 7 students · <b>Subject:</b> School trip to the Moon<br>'+a.lines.map(l=>l[0]).join('<br>')+'</div>':''):'';
+ return '<div class="card"><div class="meta"><span>'+a.n+' · '+a.min+' min</span><span>Question '+(s.i+1)+' / '+n+' · Stars: '+s.sc+'</span></div>'+au+'<div class="q">'+pr+'</div><div class="grid">'+q.o.map((o,i)=>'<button class="o'+(lk&&i===q.a?' ok':lk&&i===s.pk?' bad':'')+'" '+(lk?'disabled':'')+' onclick="pick('+i+')"><span>'+o.t+'</span></button>').join('')+'</div><div class="fb">'+(lk?'<span class="seal'+(ok?'':' no')+'">'+(ok?'LIFT<br>OFF!':'TRY<br>AGAIN')+'</span><span>The answer is: '+q.o[q.a].t+'.</span>':'Choose the correct answer.')+'</div><button class="go" onclick="nxt()" '+(lk?'':'disabled')+'>'+(s.i+1===n?'Finish':'Next →')+'</button></div>'}
+function view(){
+ const a=A[S.step],s=S.st[S.step];
+ if(a.type==='mc')return mc(a,s);
+ if(a.type==='build'){const all=Object.keys(s.b).length===6;return '<div class="card"><div class="meta"><span>'+a.n+' · '+a.min+' min</span><span>Stars: '+s.sc+'</span></div><div class="learn"><b>Writing tip:</b> A formal email is polite and professional. Build a formal email from the head teacher about a school trip: choose the formal sentence for each part.</div>'+BS.map((b,k)=>'<div><div class="q2">'+(k+1)+') '+b[0]+'</div><div class="grid" style="margin-top:6px">'+b[1].map((x,i)=>'<button class="o'+(s.b[k]===i?' ok':(s.bad&&s.bad[0]===k&&s.bad[1]===i)?' bad':'')+'" '+(s.b[k]!==undefined?'disabled':'')+' onclick="bd('+k+','+i+')"><span>'+x+'</span></button>').join('')+'</div></div>').join('')+'<div class="fb">'+s.msg+'</div>'+(all?'<div class="mail" style="max-height:none"><b>My email</b><br>'+btext().replace(/\n/g,'<br>')+'</div><div class="chk">'+CK.map(c=>'<div class="on"><i>✓</i>'+c+'</div>').join('')+'</div><div class="row"><button class="go alt" onclick="bhear()">▶ Hear my email</button></div>':'')+'</div>'}
+ const g=i=>'<b>'+(s.ans[i]===undefined?'______':C.o[i][s.ans[i]])+'</b>',n=C.a.filter((x,i)=>s.ans[i]===x).length;
+ return '<div class="card"><div class="meta"><span>Finishing the lesson · Writing an email</span><b>(5 marks)</b></div><div style="font-style:italic;font-size:18px">For each item, shade in the bubble next to the correct option.</div><div class="box">'+C.t.replace(/\{(\d)\}/g,(m,i)=>g(+i))+'</div>'+C.o.map((os,gi)=>'<div class="cz"><b>'+(gi+1)+')</b>'+os.map((w,i)=>{const sel=s.ans[gi]===i,cls=s.chk&&i===C.a[gi]?' ok':s.chk&&sel?' bad':'';return '<button class="o'+(sel?' sel':'')+cls+'" onclick="cl('+gi+','+i+')"><span class="dot"></span>'+w+'</button>'}).join('')+'</div>').join('')+(s.chk?'<div class="big-stamp">'+n+' / 5</div>':'')+'<div class="row"><span style="margin-right:auto;font-size:20px;font-weight:700">'+(s.chk?(n===5?'Perfect landing! Amazing!':'Review: '+C.a.map((x,i)=>s.ans[i]!==x?C.o[i][x]:null).filter(Boolean).join(', ')):'Answer all 5 items, then press Check.')+'</span><button class="go alt" onclick="chk()">Check</button><button class="go" onclick="retry()">Try again</button></div><div class="credit" style="color:var(--ink)">Created by T.Badria Alfalahi</div></div>'}
+function render(){
+ const L=A.length-1;
+ document.getElementById('nav').innerHTML='<span>Choose your planet:</span>'+A.map((a,k)=>'<button class="'+(k===S.step?'on':'')+'" onclick="go('+k+')">'+a.n+'</button>').join('');
+ document.getElementById('stars').textContent=stars();
+ document.getElementById('pl').style.left='calc('+(S.step/L*100)+'% - '+(S.step/L*60)+'px)';
+ document.getElementById('stations').innerHTML=A.map((a,k)=>'<span class="st'+(k<=S.step?' on':'')+'" style="left:'+(k/L*100)+'%"></span>').join('');
+ document.getElementById('main').innerHTML=view()}
+render();
+</script></body></html>
